@@ -1,0 +1,25 @@
+import sympy as sp
+
+# Değişkenleri tanımla
+x, y = sp.symbols('x y')
+
+# Fonksiyonu tanımla (örnek: f(x, y) = x**2 + x*y + y**2)
+f = x**2 + x*y + y**2
+
+# Birinci türevler (gradyan)
+grad_f = [sp.diff(f, var) for var in (x, y)]
+
+# İkinci türevler (Hessian matrisi)
+hessian_f = sp.hessian(f, (x, y))
+
+# Belirli bir noktada değerlendirme (örnek: (1, 2))
+point = {x: 1, y: 2}
+hessian_at_point = hessian_f.subs(point)
+
+# Sonuçları yazdır
+print("Fonksiyon:", f)
+print("Gradyan:", grad_f)
+print("Hessian Matrisi:")
+sp.pprint(hessian_f)
+print("Hessian (1,2) noktasında:")
+sp.pprint(hessian_at_point)
